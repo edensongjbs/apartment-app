@@ -1,1 +1,15 @@
-
+<form action="/tenants/<%= @tenant.id %>" method="POST">
+<input type="hidden" name="_method" value="patch">
+<label>Name :</label>
+<input type="text" name="tenant[name]" value="<%=@tenant.name%>">
+<select name="tenant[apartment_id]">
+    <option disabled >--Select an Existing Address--</option>
+    <% @apartments.each do |apartment| %>
+    <option <%="selected" if @tenant.apartment_id == apartment.id %>
+     value="<%=apartment.id%>"> <%= apartment.address %> </option>
+    <% end %>
+</select>
+<label>Apartment Address (new): </label>
+<input type="text" name="apartment[address]">
+<input type="submit">
+</form>

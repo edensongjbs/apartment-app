@@ -1,0 +1,13 @@
+<form action="/tenants" method="POST">
+<label>Name :</label>
+<input type="text" name="tenant[name]">
+<select name="tenant[apartment_id]">
+    <option disabled selected>--Select an Existing Address--</option>
+    <% @apartments.each do |apartment| %>
+    <option value="<%=apartment.id%>"> <%= apartment.address %> </option>
+    <% end %>
+</select>
+<label>Apartment Address (new): </label>
+<input type="text" name="apartment[address]">
+<input type="submit">
+</form>
